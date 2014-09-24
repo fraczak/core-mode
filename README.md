@@ -1,4 +1,4 @@
 core-mode
 =========
 
-Emacs mode for KernelCore, an experimental programming language 
+Emacs mode for Kernel/CORE, an experimental programming language
