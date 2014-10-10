@@ -4,8 +4,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(TeX-PDF-mode t)
- '(auto-save-file-name-transforms (quote ((".*" "~/.emacs.d/autosaves/\\1" t))))
- '(backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/"))))
  '(custom-enabled-themes nil)
  '(inhibit-startup-screen t)
  '(tool-bar-style (quote image)))
@@ -24,8 +22,19 @@
       )
 )
 
+(add-to-list 'load-path "~/gits/multi-web-mode")
+(require 'multi-web-mode)
+(setq mweb-default-major-mode 'html-mode)
+(setq mweb-tags 
+      '((php-mode "<\\?php\\|<\\? \\|<\\?=" "\\?>")
+        (js-mode "<script +\\(type=\"text/javascript\"\\|language=\"javascript\"\\)[^>]*>" "</script>")
+        (css-mode "<style +type=\"text/css\"[^>]*>" "</style>")))
+(setq mweb-filename-extensions '("php" "htm" "html" "ctp" "phtml" "php4" "php5"))
+(multi-web-global-mode 1)
+
 (add-to-list 'load-path "~/gits/idle-highlight-mode")
 (require 'idle-highlight-mode)
+(add-to-list 'load-path "~/gits/core-mode")
 (require 'core-mode)
 
 ;;; turn on syntax highlighting
@@ -120,3 +129,4 @@ convoluted. We use part of it --- skip comment par we are in."
         (LaTeX-newline)))
     (set-marker to-marker nil)))
 (ad-activate 'LaTeX-fill-region-as-paragraph)
+(put 'downcase-region 'disabled nil)
