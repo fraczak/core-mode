@@ -91,7 +91,7 @@
 (require 'jade-mode)
 (add-to-list 'auto-mode-alist '("\\.styl$" . sws-mode))
 (add-to-list 'auto-mode-alist '("\\.jade$" . jade-mode))
-(add-to-list 'auto-mode-alist '("\\.[_]?coffee$" . coffee-mode))
+;;(add-to-list 'auto-mode-alist '("\\.[_]?coffee$" . coffee-mode))
 (add-to-list 'auto-mode-alist '("\\.[_]?js$" . js2-mode))
 
 (global-whitespace-mode)
@@ -108,3 +108,10 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+(put 'downcase-region 'disabled nil)
+
+;; flymake for JavaScript using JSHint through node-jshint.
+;;(add-to-list 'load-path "~/gits/flymake-node-jshint")
+;;(require 'flymake-node-jshint)
+;; (setq flymake-node-jshint-config "~/.jshintrc-node.json") ; optional
+;;(add-hook 'js-mode-hook (lambda () (flymake-mode 1)))
