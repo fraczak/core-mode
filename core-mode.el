@@ -24,7 +24,7 @@
     )
 
    '("\\([$@][ \t\n]*\\w*\\)" . font-lock-variable-name-face)
-   '("\\(['.][ \t\n]*\\w*\\)" . font-lock-constant-face)
+   '("\\(['\:.][ \t\n]*\\w*\\)" . font-lock-constant-face)
    '("\\([.][.][.]\\|<by>\\|<type>\\|<code>\\|<is>\\)" . font-lock-keyword-face)
    '("\\(::\\|[][{}()=,;|]\\|->\\)" . font-lock-keyword-face)
 
