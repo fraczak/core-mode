@@ -16,20 +16,13 @@
 
 (defconst core-font-lock-keywords-1
   (list
-   '("\\(\\w*\\)[ \t\n]*\\(=\\|<is>\\)[ \n\t\{\[\(]" 
-     (1 font-lock-function-name-face))
+   '("\\(_*\\w+\\)[ \t\n]*[=]"  (1 font-lock-function-name-face))
+   '("[$][ \t]*\\(\\w+\\)[ \t\n]*[=]"  (1 font-lock-type-face))
 
-   '("\\(<type>\\|<code>\\)[ \t\n]*\\(\\w*\\)[ \t\n]*<is>" 
-     (2 font-lock-function-name-face)
-    )
-
-   '("\\([$@][ \t\n]*\\w*\\)" . font-lock-variable-name-face)
-   '("\\(['.][ \t\n]*\\w*\\)" . font-lock-constant-face)
-   '("\\([.][.][.]\\|<by>\\|<type>\\|<code>\\|<is>\\)" . font-lock-keyword-face)
-   '("\\(::\\|[][{}()=,;|]\\|->\\)" . font-lock-keyword-face)
-
-    '("\\<\\(CONCAT\\(?:ENATE\\)?\\|FIRST\\(?:_MATCH\\)?\\|INTER\\(?:SECT\\)?\\|LONGEST\\(?:_MATCH\\)?\\|SHORTEST\\(?:_MATCH\\)?\\)\\>" . font-lock-builtin-face)
-
+   '("\\([.][ \t\n]*_*\\w+\\)" . font-lock-constant-face)
+   '("\\([][{}()=,;<>|]\\)" . font-lock-keyword-face)
+   '("\\b\\($?[ \t]*int\\|$?[ \t]*bool\\|$?[ \t]*string\\)\\b" . font-lock-type-face)
+   '("\\(_*\\w+\\)" . font-lock-variable-name-face)
    )
   "Highlighting expressions for Kernel/CORE mode.")
 
@@ -52,11 +45,14 @@
     (modify-syntax-entry ?9 "w" core-mode-syntax-table)
     (modify-syntax-entry ?_ "w" core-mode-syntax-table)
     (modify-syntax-entry ?+ "w" core-mode-syntax-table)
-    (modify-syntax-entry ?= "w" core-mode-syntax-table)
-    (modify-syntax-entry ?! "w" core-mode-syntax-table)
-    (modify-syntax-entry ?< "w" core-mode-syntax-table)
-    (modify-syntax-entry ?> "w" core-mode-syntax-table)
-    (modify-syntax-entry ?? "w" core-mode-syntax-table)
+    (modify-syntax-entry ?< "(")
+    (modify-syntax-entry ?> ")")
+    (modify-syntax-entry ?' "\"")
+    ;;(modify-syntax-entry ?= "w" core-mode-syntax-table)
+    ;;(modify-syntax-entry ?! "w" core-mode-syntax-table)
+    ;;(modify-syntax-entry ?< "w" core-mode-syntax-table)
+    ;;(modify-syntax-entry ?> "w" core-mode-syntax-table)
+    ;;(modify-syntax-entry ?? "w" core-mode-syntax-table)
 
     ;; Comment styles are same as C++
     (modify-syntax-entry ?/ "w 124b" core-mode-syntax-table)
